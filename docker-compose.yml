@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+
+  redis:
+    image: redis/redis-stack:latest
+    ports:
+      - "6379:6379"
+      - "8001:8001"
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: forgeuser
+      POSTGRES_PASSWORD: forgepass
+      POSTGRES_DB: forgedb
+    ports:
+      - "5432:5432"
+
+  api:
+    build:  
+      context: .         
+      dockerfile: Dockerfile
+    command: npm run start:api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://forgeuser:forgepass@postgres:5432/forgedb
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
+  worker:
+    build: 
+      context: .           
+      dockerfile: Dockerfile
+    command: npm run start:worker
+    depends_on:
+      - redis
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://forgeuser:forgepass@postgres:5432/forgedb
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
