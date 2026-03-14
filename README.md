@@ -1,5 +1,12 @@
 # QueueForge - Distributed Job Queue
 
+[![Node.js](https://img.shields.io/badge/node.js-v16+-green.svg)](https://nodejs.org/)
+[![Redis](https://img.shields.io/badge/redis-v7.0+-red.svg)](https://redis.io/)
+[![PostgreSQL](https://img.shields.io/badge/postgresql-v15+-336791.svg)](https://www.postgresql.org/)
+[![BullMQ](https://img.shields.io/badge/bullmq-latest-orange.svg)](https://docs.bullmq.io/)
+[![Docker](https://img.shields.io/badge/docker-compose-2496ED.svg)](https://www.docker.com/)
+
+
 QueueForge is a distributed background job processing system built with
 Node.js and TypeScript.\
 It provides a scalable architecture for handling asynchronous tasks such
@@ -193,7 +200,7 @@ The dashboard allows:
 
 ### 1. Start Infrastructure
 
-    docker compose up -d
+    docker compose up -d redis postgres
 
 This starts:
 
