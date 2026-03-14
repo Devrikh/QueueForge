@@ -11,10 +11,21 @@ Redis-backed job queue and dedicated worker processes.
 
 ------------------------------------------------------------------------
 
-## Architecture
-
-Client \| v API Service (Express) \| v Redis Queue (BullMQ) \| v Worker
-Processes \| v PostgreSQL (Job Persistence)
+```
+Client
+  |
+  v
+API Service (Express)
+  |
+  v
+Redis Queue (BullMQ)
+  |
+  v
+Worker Processes
+  |
+  v
+PostgreSQL (Job Persistence)
+```
 
 **Key Idea:**\
 User requests enqueue jobs through an API. Workers consume jobs
@@ -306,5 +317,3 @@ Possible extensions:
 -   worker autoscaling
 -   authentication for admin UI
 -   job scheduling (cron jobs)
-
-```
