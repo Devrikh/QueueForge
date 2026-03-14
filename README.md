@@ -1,4 +1,4 @@
-# QueueForge
+# QueueForge - Distributed Job Queue
 
 QueueForge is a distributed background job processing system built with
 Node.js and TypeScript.\
